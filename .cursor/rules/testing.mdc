@@ -1,0 +1,48 @@
+---
+description: Testing standards for backend and frontend
+globs: "**/*{Test,test,spec}*"
+alwaysApply: false
+---
+
+# Testing Guidelines
+
+## Backend (JUnit 5 + Spring Boot Test)
+
+| Layer | Tool | Scope |
+|-------|------|-------|
+| Unit | JUnit 5, Mockito | Services, state machine, validators |
+| Integration | `@SpringBootTest`, Testcontainers or H2 | Repositories, full API flow |
+| API | `@WebMvcTest` or RestAssured | Controllers, error responses |
+
+## Required Coverage
+
+- **State machine integration tests** — every valid transition passes; every invalid transition returns 400.
+- **Validation tests** — empty title, invalid priority, missing required fields.
+- **Persistence tests** — data survives application restart (integration test with real DB).
+- **Search and filter** — keyword search and status filter return correct subsets.
+
+## Test Naming
+
+```java
+// Pattern: methodName_condition_expectedResult
+void transitionStatus_fromClosedToOpen_returnsBadRequest()
+void createTicket_withBlankTitle_returnsValidationError()
+```
+
+## Frontend
+
+- Component tests for forms, error display, and status filter UI.
+- Integration/e2e tests for create → list → view → update → comment flow.
+- Assert meaningful error messages are shown when API returns 4xx.
+
+## Running Tests
+
+```bash
+# Backend
+cd backend && ./mvnw test
+
+# Frontend
+cd frontend && npm test
+```
+
+Do not disable or skip failing tests to pass CI. Fix the code or update the spec.

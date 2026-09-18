@@ -1,0 +1,12 @@
+---
+description: Security defaults — no secrets, safe configuration
+alwaysApply: true
+---
+
+# Security
+
+- Never commit `.env`, credentials, API keys, or private keys.
+- Use `application.yml` with environment variable placeholders; provide `.env.example` with dummy values only.
+- Do not disable TLS, use permissive CORS (`*`), or bypass validation for convenience.
+- Do not use `eval`, unsafe deserialization, or raw SQL without parameterisation.
+- Log errors server-side; return generic messages to clients for 500 errors.

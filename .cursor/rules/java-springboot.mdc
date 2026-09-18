@@ -1,0 +1,53 @@
+---
+description: Java 21 and Spring Boot conventions for the ticket system
+globs: backend/**/*.java
+alwaysApply: false
+---
+
+# Java Spring Boot Guidelines
+
+## Stack
+
+- Java 21, Spring Boot 3.x
+- Spring Web, Spring Data JPA, Spring Validation
+- PostgreSQL for production; H2 for local dev and tests
+
+## Package Layout
+
+```
+com.example.tickets
+├── controller/    # REST endpoints only — no business logic
+├── service/       # Business logic and state-machine enforcement
+├── repository/    # JPA repositories
+├── domain/        # Entities and enums (TicketStatus, Priority)
+├── dto/           # Request/response records
+├── exception/     # Custom exceptions + @ControllerAdvice handler
+└── config/        # CORS, OpenAPI, datasource profiles
+```
+
+## Conventions
+
+- Use constructor injection; avoid field `@Autowired`.
+- Prefer Java records for DTOs; use `@Valid` on request bodies.
+- Return `ResponseEntity` with appropriate HTTP status codes.
+- Map entities to DTOs in the service layer, not in controllers.
+- Use `@Transactional` on service methods that write to the database.
+- Enum values for status and priority must match `spec/api-contract.md` exactly.
+
+## State Machine
+
+Enforce transitions in a dedicated service method — not in the controller or entity setter:
+
+```
+OPEN → IN_PROGRESS → RESOLVED → CLOSED
+OPEN → CANCELLED
+IN_PROGRESS → CANCELLED
+```
+
+Reject invalid transitions with `400 Bad Request` and a clear error message.
+
+## Persistence
+
+- Use `Instant` or `OffsetDateTime` for timestamps.
+- Add `@CreatedDate` / `@LastModifiedDate` via JPA auditing where appropriate.
+- Flyway or Liquibase migrations for schema changes; no `ddl-auto=create-drop` in prod.

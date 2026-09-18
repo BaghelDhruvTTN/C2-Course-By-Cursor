@@ -1,0 +1,31 @@
+---
+description: Spec-driven development workflow for this project
+alwaysApply: true
+---
+
+# Spec-Driven Workflow
+
+Follow this order strictly. Do not skip steps.
+
+```
+Requirement → Specification → Plan/Tasks → Implementation → Testing → Review → Fix
+```
+
+## Before Implementation
+
+1. Read relevant files under `spec/` before writing code.
+2. If behaviour is not specified, update the spec first — do not guess in code.
+3. Do not prompt or implement "build the complete application" in one shot.
+
+## During Implementation
+
+- Make small, reviewable changes aligned with `spec/api-contract.md` and `spec/data-model.md`.
+- Enforce the ticket state machine in the backend only (`spec/state-machine.md`).
+- Validate all input on the backend; return structured errors the UI can display.
+- Never commit secrets, credentials, or `.env` files.
+
+## After Implementation
+
+- Add or update tests per `spec/test-strategy.md`.
+- Run `/review-code` before considering work complete.
+- Log prompts in `docs/prompt-history.md` and AI mistakes in `docs/ai-mistakes-log.md`.

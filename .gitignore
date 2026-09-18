@@ -1,0 +1,46 @@
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+application-local.yml
+application-local.properties
+
+# Java / Spring Boot
+backend/target/
+backend/data/
+backend/target/persistence-test/
+backend/.mvn/wrapper/maven-wrapper.jar
+*.class
+*.jar
+*.war
+*.log
+hs_err_pid*
+
+# Node / Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/dist/
+frontend/build/
+frontend/.env.local
+
+# IDE
+.idea/
+*.iml
+.vscode/
+!.vscode/extensions.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test output
+coverage/
+*.lcov
+
+# Database (local dev)
+*.db
+*.h2.db

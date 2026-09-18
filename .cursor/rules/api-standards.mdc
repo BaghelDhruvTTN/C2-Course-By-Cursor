@@ -1,0 +1,60 @@
+---
+description: REST API design and error response standards
+globs: "{backend/**/controller/**,backend/**/dto/**,spec/api-contract.md}"
+alwaysApply: false
+---
+
+# API Standards
+
+## REST Conventions
+
+| Action | Method | Path |
+|--------|--------|------|
+| List tickets | GET | `/api/tickets` |
+| Create ticket | POST | `/api/tickets` |
+| Get ticket | GET | `/api/tickets/{id}` |
+| Update ticket | PUT | `/api/tickets/{id}` |
+| Transition status | PATCH | `/api/tickets/{id}/status` |
+| Add comment | POST | `/api/tickets/{id}/comments` |
+
+Query params: `?status=OPEN&keyword=login` for filter and search.
+
+## Request / Response
+
+- JSON only; `Content-Type: application/json`.
+- Use camelCase for JSON field names.
+- Paginate list endpoints when ticket count grows (`page`, `size`, `sort`).
+
+## Error Response Format
+
+All 4xx/5xx responses use a consistent body:
+
+```json
+{
+  "timestamp": "2026-09-18T15:30:00Z",
+  "status": 400,
+  "error": "Bad Request",
+  "message": "Cannot transition from CLOSED to OPEN",
+  "path": "/api/tickets/1/status",
+  "fieldErrors": [
+    { "field": "title", "message": "Title must not be blank" }
+  ]
+}
+```
+
+`fieldErrors` is present for validation failures; omit or empty for business-rule errors.
+
+## HTTP Status Codes
+
+| Code | When |
+|------|------|
+| 200 | Successful GET, PUT, PATCH |
+| 201 | Successful POST (create) |
+| 400 | Validation failure or invalid state transition |
+| 404 | Ticket not found |
+| 500 | Unexpected server error (log details, return generic message) |
+
+## Versioning and Docs
+
+- Document all endpoints in `spec/api-contract.md`.
+- Expose OpenAPI/Swagger at `/swagger-ui.html` in dev profile only.
