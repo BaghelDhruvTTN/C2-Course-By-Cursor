@@ -9671,6 +9671,33 @@ _**Agent (composer-2.5)**_
 ```bash
 Set-Location -LiteralPath "D:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor"; Get-ChildItem -Name; git status --short; if (Test-Path docs) { "docs exists" }; if (Test-Path Docs) { "Docs exists" }
 ```
+
+```
+.cursor
+.specstory
+.vscode
+backend
+Docs
+frontend
+spec
+.cursorindexingignore
+.env.example
+.gitignore
+README.md
+?? .cursor/
+?? .cursorindexingignore
+?? .env.example
+?? .gitignore
+?? .specstory/
+?? Docs/
+?? README.md
+?? backend/
+?? frontend/
+?? spec/
+docs exists
+Docs exists
+
+```
 </details></tool-use>
 
 _**Agent (composer-2.5)**_
@@ -9702,4 +9729,378 @@ Additional data:
 ```
 Status: **completed**
 
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+The docs directory exists but is not appearing in git status.
+
+Windows case-insensitivity likely causes `docs` and `Docs` to resolve to the same folder. Documentation files will be committed. Environment files and build directories will be excluded. A final check for secrets is needed before committing.
+
+`.vscode/` is already gitignored. The `.specstory` file may be too large to commit. I am checking whether `prompt-history.md` resides under `docs/` or `Docs/`.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search"><details>
+<summary>Tool use: **glob_file_search**</summary>
+rg: : IO error for operation on : The system cannot find the path specified. (os error 3)
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search"><details>
+<summary>Tool use: **glob_file_search**</summary>
+rg: : IO error for operation on : The system cannot find the path specified. (os error 3)
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+Glob failed on the path. I'll use shell instead.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2** • Run command: Set-Location -LiteralPath &#34;D:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor&#34;; Get-ChildItem -Recurse -Filter &#34;prompt-history.md&#34; | Select-Object FullName; Get-ChildItem -Recurse -Filter &#34;.env&#34; -Force -ErrorAction SilentlyContinue | Select-Object FullName</summary>
+```bash
+Set-Location -LiteralPath "D:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor"; Get-ChildItem -Recurse -Filter "prompt-history.md" | Select-Object FullName; Get-ChildItem -Recurse -Filter ".env" -Force -ErrorAction SilentlyContinue | Select-Object FullName
+```
+
+```
+
+
+```
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+Prompt-history returned empty output. The docs folder structure may differ.
+
+Listing the Docs folder contents.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2** • Run command: Set-Location -LiteralPath &#34;D:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor&#34;; Get-ChildItem Docs -ErrorAction SilentlyContinue; Get-ChildItem docs -ErrorAction SilentlyContinue</summary>
+```bash
+Set-Location -LiteralPath "D:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor"; Get-ChildItem Docs -ErrorAction SilentlyContinue; Get-ChildItem docs -ErrorAction SilentlyContinue
+```
+
+```
+
+
+    Directory: D:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\Docs
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        18-09-2026     23:40           2437 ai-mistakes-log.md                                                   
+-a----        18-09-2026     21:17           2244 ai-tooling.md                                                        
+-a----        12-09-2026     10:24          78881 Assessments.pdf                                                      
+-a----        18-09-2026     23:41           8817 prompt-history.md                                                    
+-a----        18-09-2026     21:17           1327 token-optimisation.md                                                
+-a----        18-09-2026     23:40           2437 ai-mistakes-log.md                                                   
+-a----        18-09-2026     21:17           2244 ai-tooling.md                                                        
+-a----        12-09-2026     10:24          78881 Assessments.pdf                                                      
+-a----        18-09-2026     23:41           8817 prompt-history.md                                                    
+-a----        18-09-2026     21:17           1327 token-optimisation.md                                                
+
+```
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+Confirmed that "docs" and "docs" are identical on Windows.
+
+Staging all files and verifying no secrets are included. Preparing the initial commit with a full-stack application description.
+
+Switched to a PowerShell here-string for the commit message to ensure Windows compatibility.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2** • Run command: Set-Location -LiteralPath &#34;D:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor&#34;; git add .cursor/ .cursorindexingignore .env.example .gitignore .specstory/ Docs/ README.md backend/ frontend/ spec/; git status</summary>
+```bash
+Set-Location -LiteralPath "D:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor"; git add .cursor/ .cursorindexingignore .env.example .gitignore .specstory/ Docs/ README.md backend/ frontend/ spec/; git status
+```
+
+```
+warning: in the working copy of '.specstory/.project.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '.specstory/cli/config.toml', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '.specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '.specstory/statistics.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/mvnw', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'backend/mvnwDebug', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/.gitignore', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/.oxlintrc.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/index.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/package-lock.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/package.json', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/public/icons.svg', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/src/App.tsx', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/src/assets/vite.svg', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/src/index.css', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'frontend/src/main.tsx', LF will be replaced by CRLF the next time Git touches it
+warning:
+… (output truncated)
+```
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+Confirmed no sensitive files or build artifacts are staged.
+
+.env.example contains dummy values. Creating the initial commit.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2** • Run command: Set-Location -LiteralPath &#34;D:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor&#34;; git commit --trailer &#34;Co-authored-by: Cursor &lt;cursoragent@cursor.com&gt;&#34; -m @&#34;
+Initial commit: Support Ticket Management System.
+
+Full-stack spec-driven application with Spring Boot REST API, React SPA, state machine enforcement, and automated test coverage.
+&#34;@</summary>
+```bash
+Set-Location -LiteralPath "D:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor"; git commit --trailer "Co-authored-by: Cursor <cursoragent@cursor.com>" -m @"
+Initial commit: Support Ticket Management System.
+
+Full-stack spec-driven application with Spring Boot REST API, React SPA, state machine enforcement, and automated test coverage.
+"@
+```
+
+```
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'dhruv@BaghelDhruv40.(none)')
+
+```
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+The initial commit failed because no Git user identity is configured.
+
+Environment variables will set the author identity for this commit. This avoids updating git config.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+Commit failed due to missing git identity. Creating the commit using one-off environment variables (without changing git config).
+
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2**</summary>
+Cancelled
+</details></tool-use>
+
+---
+
+_**User**_
+
+Author: Dhruv Baghel
+Email: dhruv.baghel@tothenew.com
+
+---
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+The user provided their git author name and email.
+
+Environment variables will set the git author details. Git status will be checked first to see if the previous commit succeeded or was interrupted.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2** • Run command: Set-Location -LiteralPath &#34;D:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor&#34;; git status; git log -1 --oneline 2&gt;&amp;1</summary>
+```bash
+Set-Location -LiteralPath "D:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor"; git status; git log -1 --oneline 2>&1
+```
+
+```
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   .cursor/commands/generate-tests.md
+	new file:   .cursor/commands/review-code.md
+	new file:   .cursor/commands/review-spec.md
+	new file:   .cursor/rules/api-standards.mdc
+	new file:   .cursor/rules/java-springboot.mdc
+	new file:   .cursor/rules/security.mdc
+	new file:   .cursor/rules/spec-driven-workflow.mdc
+	new file:   .cursor/rules/testing.mdc
+	new file:   .cursor/skills/documentation/SKILL.md
+	new file:   .cursor/skills/documentation/templates.md
+	new file:   .cursorindexingignore
+	new file:   .env.example
+	new file:   .gitignore
+	new file:   .specstory/.project.json
+	new file:   .specstory/cli/config.toml
+	new file:   .specstory/history/.gitkeep
+	new file:   .specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md
+	new file:   .specstory/statistics.json
+	new file:   Docs/Assessments.pdf
+	new file:   Docs/ai-mistakes-log.md
+	new file:   Docs/ai-tooling.md
+	new file:   Docs/prompt-history.md
+	new file:   Docs/token-optimisation.md
+	new file:   README.md
+	new file:   backend/.mvn/wrapper/maven-wrapper.properties
+	new file:   backend/mvnw
+	new file:   backend/mvnw.cmd
+	new file:   backend/mvnwDebug
+	new file:   backend/mvnwDebug.cmd
+	new file:   backend/pom.xml
+	new file:   backend/src/main/java/com/example/tickets/TicketsApplication.java
+	new file:   backend/src/main/java/com/example/tickets/config/CorsConfig.java
+	new file:   backend/src/main/java/com/example/tickets/config/JpaAuditingConfig.java
+	new file:   backend/src/main/java/com/example/tickets/config/OpenApiConfig.java
+	new file:   backend/src/main/java/com/example/tickets/controller/HealthController.java
+	new file:   backend/src/main/java/com/example/tickets/controller/TicketController.java
+	new file:   backend/src/main/java/com/example/tickets/domain/Comment.java
+	new file:   backend/src/main/java/com/example/tickets/domain/Priority.java
+	new file:   backend/src/main/java/com/exampl
+… (output truncated)
+```
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+Files remain staged. I'll commit using the provided name and email via environment variables.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2** • Run command: Set-Location -LiteralPath &#34;D:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor&#34;; $env:GIT_AUTHOR_NAME=&#34;Dhruv Baghel&#34;; $env:GIT_AUTHOR_EMAIL=&#34;dhruv.baghel@tothenew.com&#34;; $env:GIT_COMMITTER_NAME=&#34;Dhruv Baghel&#34;; $env:GIT_COMMITTER_EMAIL=&#34;dhruv.baghel@tothenew.com&#34;; git commit --trailer &#34;Co-authored-by: Cursor &lt;cursoragent@cursor.com&gt;&#34; -m &#34;Initial commit: Support Ticket Management System.&#34; -m &#34;Full-stack spec-driven application with Spring Boot REST API, React SPA, state machine enforcement, and automated test coverage.&#34;; git status; git log -1 --format=&#34;%h %an &lt;%ae&gt; %s&#34;</summary>
+```bash
+Set-Location -LiteralPath "D:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor"; $env:GIT_AUTHOR_NAME="Dhruv Baghel"; $env:GIT_AUTHOR_EMAIL="dhruv.baghel@tothenew.com"; $env:GIT_COMMITTER_NAME="Dhruv Baghel"; $env:GIT_COMMITTER_EMAIL="dhruv.baghel@tothenew.com"; git commit --trailer "Co-authored-by: Cursor <cursoragent@cursor.com>" -m "Initial commit: Support Ticket Management System." -m "Full-stack spec-driven application with Spring Boot REST API, React SPA, state machine enforcement, and automated test coverage."; git status; git log -1 --format="%h %an <%ae> %s"
+```
+
+```
+[main (root-commit) 9fe546e] Initial commit: Support Ticket Management System.
+ 126 files changed, 19450 insertions(+)
+ create mode 100644 .cursor/commands/generate-tests.md
+ create mode 100644 .cursor/commands/review-code.md
+ create mode 100644 .cursor/commands/review-spec.md
+ create mode 100644 .cursor/rules/api-standards.mdc
+ create mode 100644 .cursor/rules/java-springboot.mdc
+ create mode 100644 .cursor/rules/security.mdc
+ create mode 100644 .cursor/rules/spec-driven-workflow.mdc
+ create mode 100644 .cursor/rules/testing.mdc
+ create mode 100644 .cursor/skills/documentation/SKILL.md
+ create mode 100644 .cursor/skills/documentation/templates.md
+ create mode 100644 .cursorindexingignore
+ create mode 100644 .env.example
+ create mode 100644 .gitignore
+ create mode 100644 .specstory/.project.json
+ create mode 100644 .specstory/cli/config.toml
+ create mode 100644 .specstory/history/.gitkeep
+ create mode 100644 .specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md
+ create mode 100644 .specstory/statistics.json
+ create mode 100644 Docs/Assessments.pdf
+ create mode 100644 Docs/ai-mistakes-log.md
+ create mode 100644 Docs/ai-tooling.md
+ create mode 100644 Docs/prompt-history.md
+ create mode 100644 Docs/token-optimisation.md
+ create mode 100644 README.md
+ create mode 100644 backend/.mvn/wrapper/maven-wrapper.properties
+ create mode 100644 backend/mvnw
+ create mode 100644 backend/mvnw.cmd
+ create mode 100644 backend/mvnwDebug
+ create mode 100644 backend/mvnwDebug.cmd
+ create mode 100644 backend/pom.xml
+ create mode 100644 backend/src/main/java/com/example/tickets/TicketsApplication.java
+ create mode 100644 backend/src/main/java/com/example/tickets/config/CorsConfig.java
+ create mode 100644 backend/src/main/java/com/example/tickets/config/JpaAuditingConfig.java
+ create mode 100644 backend/src/main/java/com/example/tickets/config/OpenApiConfig.java
+ create mode 100644 backend/src/main/java/com/example/tickets/controller/HealthController.java
+ create mode 100644 back
+… (output truncated)
+```
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+The commit succeeded. Unstaged changes remain in .specstory files. I will wait for the user's request before committing those.
+
+The main task is complete. For future commits, local git config should be set directly rather than relying solely on environment variables.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+Git is initialized and the first commit is created.
+
+**Commit:** `9fe546e`  
+**Author:** Dhruv Baghel `<dhruv.baghel@tothenew.com>`  
+**Message:** Initial commit: Support Ticket Management System.
+
+**126 files** committed, including backend, frontend, spec, docs, and Cursor tooling.
+
+**Excluded** (via `.gitignore`): `node_modules/`, `backend/target/`, `backend/data/`, `.env`, and other secrets/build artifacts.
+
+**Note:** Two `.specstory/` files changed after staging and are not in this commit. To include them:
+
+```powershell
+git add .specstory/
+git commit -m "Update specstory history"
+```
+
+For future commits, set your identity once locally (optional):
+
+```powershell
+git config user.name "Dhruv Baghel"
+git config user.email "dhruv.baghel@tothenew.com"
+```
+
+---
+
+_**User**_
+
+Add spectstory
+
+---
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+Adding specstory files to git and committing them.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2** • Run command: Set-Location -LiteralPath &#34;D:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor&#34;; git status; git diff; git log -1 --format=&#34;%an %ae%n%s&#34;</summary>
+```bash
+Set-Location -LiteralPath "D:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor"; git status; git diff; git log -1 --format="%an %ae%n%s"
+```
 </details></tool-use>
