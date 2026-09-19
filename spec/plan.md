@@ -223,16 +223,47 @@ Implement **one phase at a time**. Run tests after each phase. Do not skip ahead
 4. **Log prompts** to `docs/prompt-history.md` after each session.
 5. **Record AI mistakes** in `docs/ai-mistakes-log.md` when caught.
 
+## Branching
+
+This project uses a dual-track model documented in [`branching-strategy.md`](branching-strategy.md):
+
+- **`main`** — production-ready track (Phase 10+)
+- **`demo/phase-{N}-{slug}`** — frozen demonstrable milestones
+
+The assessment-ready application (Phases 1–9) is preserved on `demo/phase-9-assessment-complete`.
+
+---
+
+## Phase 10+ — Production Readiness (on `main`)
+
+**Goal:** Harden the application for production deployment.
+
+| # | Task | Done |
+|---|------|------|
+| 10.1 | Authentication and authorization | [ ] |
+| 10.2 | Rate limiting and `keyword` length cap | [ ] |
+| 10.3 | Prod CORS from environment variable | [ ] |
+| 10.4 | Frontend: pagination race fix, list error retry | [ ] |
+| 10.5 | Frontend: TypeScript `strict` mode | [ ] |
+| 10.6 | Expanded test coverage per review | [ ] |
+| 10.7 | CI pipeline (backend + frontend tests) | [ ] |
+| 10.8 | Create `demo/phase-10-production-baseline` when demonstrable | [ ] |
+
+Implement one task or sub-task per session. Update spec before code.
+
+---
+
 ## Current Status
 
-| Phase | Status |
-|-------|--------|
-| Phase 1 — Backend scaffold | **Done** |
-| Phase 2 — Domain & persistence | **Done** |
-| Phase 3 — Service layer | **Done** |
-| Phase 4 — REST controllers | **Done** |
-| Phase 5 — Backend tests | **Done** |
-| Phase 6 — Frontend scaffold | **Done** |
-| Phase 7 — Frontend pages | **Done** |
-| Phase 8 — Frontend tests | **Done** |
-| Phase 9 — Review & acceptance | **Done** |
+| Phase | Status | Branch |
+|-------|--------|--------|
+| Phase 1 — Backend scaffold | **Done** | (included in demo/phase-9) |
+| Phase 2 — Domain & persistence | **Done** | (included in demo/phase-9) |
+| Phase 3 — Service layer | **Done** | (included in demo/phase-9) |
+| Phase 4 — REST controllers | **Done** | (included in demo/phase-9) |
+| Phase 5 — Backend tests | **Done** | (included in demo/phase-9) |
+| Phase 6 — Frontend scaffold | **Done** | (included in demo/phase-9) |
+| Phase 7 — Frontend pages | **Done** | (included in demo/phase-9) |
+| Phase 8 — Frontend tests | **Done** | (included in demo/phase-9) |
+| Phase 9 — Review & acceptance | **Done** | `demo/phase-9-assessment-complete` |
+| Phase 10+ — Production readiness | **Not started** | `main` |

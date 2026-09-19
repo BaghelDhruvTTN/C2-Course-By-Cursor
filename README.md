@@ -2,6 +2,15 @@
 
 A full-stack support ticket application built with **Spring Boot 3** and **React 18**, developed using a spec-driven workflow.
 
+## Branches
+
+| Branch | Purpose |
+|--------|---------|
+| `main` | Production-ready track (Phase 10+ hardening) |
+| `demo/phase-9-assessment-complete` | Assessment-ready demo (Phases 1–9 complete) |
+
+See [`spec/branching-strategy.md`](spec/branching-strategy.md) for the full branching model.
+
 ## Features
 
 - Create, list, view, and update support tickets
@@ -96,7 +105,7 @@ See [`spec/api-contract.md`](spec/api-contract.md) for full details.
 ## Running Tests
 
 ```bash
-# Backend (43 tests)
+# Backend (57 tests)
 cd backend && ./mvnw test
 
 # Frontend (10 tests)

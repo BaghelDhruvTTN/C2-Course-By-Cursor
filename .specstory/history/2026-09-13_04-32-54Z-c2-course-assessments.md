@@ -11173,10 +11173,50 @@ Commit the changes
 
 _**Agent (composer-2.5)**_
 
+<think><details><summary>Thought Process</summary>
+Proceeding to commit the changes.
+
+Running git status, diff, and log to review the changes. Will draft a commit message and add the relevant files. Need to handle PowerShell HEREDOC compatibility on Windows.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+I'll inspect git status, diff, and recent commits, then stage and commit the changes.
+
+
+_**Agent (composer-2.5)**_
+
 <tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
 <summary>Tool use: **run_terminal_command_v2** • Run command: cd &#34;d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor&#34;; git status</summary>
 ```bash
 cd "d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor"; git status
+```
+
+```
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   .specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md
+	modified:   .specstory/statistics.json
+	modified:   Docs/prompt-history.md
+	modified:   backend/src/main/java/com/example/tickets/config/CorsConfig.java
+	modified:   backend/src/main/java/com/example/tickets/controller/TicketController.java
+	modified:   backend/src/main/java/com/example/tickets/exception/GlobalExceptionHandler.java
+	modified:   backend/src/main/java/com/example/tickets/service/TicketService.java
+	modified:   backend/src/main/resources/application.yml
+	modified:   spec/api-contract.md
+	modified:   spec/test-strategy.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	backend/src/main/java/com/example/tickets/exception/InvalidQueryParameterException.java
+	backend/src/main/java/com/example/tickets/util/
+	backend/src/test/java/com/example/tickets/integration/TicketPaginationIntegrationTest.java
+	backend/src/test/java/com/example/tickets/util/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
 ```
 </details></tool-use>
 
@@ -11187,6 +11227,38 @@ _**Agent (composer-2.5)**_
 ```bash
 cd "d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor"; git diff; git diff --staged
 ```
+
+`````
+warning: in the working copy of '.specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '.specstory/statistics.json', LF will be replaced by CRLF the next time Git touches it
+diff --git a/.specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md b/.specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md
+index c1b2783..ea36afb 100644
+--- a/.specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md
++++ b/.specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md
+@@ -10103,4 +10103,1097 @@ _**Agent (composer-2.5)**_
+ ```bash
+ Set-Location -LiteralPath "D:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor"; git status; git diff; git log -1 --format="%an %ae%n%s"
+ ```
++
++````
++On branch main
++Changes not staged for commit:
++  (use "git add <file>..." to update what will be committed)
++  (use "git restore <file>..." to discard changes in working directory)
++	modified:   .specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md
++	modified:   .specstory/statistics.json
++
++no changes added to commit (use "git add" and/or "git commit -a")
++warning: in the working copy of '.specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md', LF will be replaced by CRLF the next time Git touches it
++warning: in the working copy of '.specstory/statistics.json', LF will be replaced by CRLF the next time Git touches it
++diff --git a/.specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md b/.specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md
++index 290288e..c1b2783 100644
++--- a/.specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md
+++++ b/.specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md
++@@ -9670,6 +9670,33 @@ _**Agent (composer-2.5)**_
++ <summary>Tool use: **run_terminal_command_v2** • Run command: Set-Location -LiteralPath &#34;D:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor&#34;; Get-ChildIte
+… (output truncated)
+`````
 </details></tool-use>
 
 _**Agent (composer-2.5)**_
@@ -11196,4 +11268,987 @@ _**Agent (composer-2.5)**_
 ```bash
 cd "d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor"; git log --oneline -5
 ```
+
+```
+fd22dd2 Changes Done
+fce2b3a Update SpecStory session history after initial commit.
+9fe546e Initial commit: Support Ticket Management System.
+
+```
 </details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+Staging all relevant files to commit.
+
+The commit covers review suggestions implementation, tests, specs, docs, and session history. Preparing the PowerShell commit command.
+
+Commit message drafted. Title: "Implement code review suggestions for list endpoint and CORS." Body: details on sort parameter, pagination validation, CORS tightening, and H2 console restriction. All modified and new files staged.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2** • Run command: cd &#34;d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor&#34;; git add backend/src/main/java/com/example/tickets/config/CorsConfig.java backend/src/main/java/com/example/tickets/controller/TicketController.java backend/src/main/java/com/example/tickets/exception/GlobalExceptionHandler.java backend/src/main/java/com/example/tickets/exception/InvalidQueryParameterException.java backend/src/main/java/com/example/tickets/service/TicketService.java backend/src/main/java/com/example/tickets/util/ backend/src/main/resources/application.yml backend/src/test/java/com/example/tickets/integration/TicketPaginationIntegrationTest.java backend/src/test/java/com/example/tickets/util/ spec/api-contract.md spec/test-strategy.md Docs/prompt-history.md .specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md .specstory/statistics.json</summary>
+```bash
+cd "d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor"; git add backend/src/main/java/com/example/tickets/config/CorsConfig.java backend/src/main/java/com/example/tickets/controller/TicketController.java backend/src/main/java/com/example/tickets/exception/GlobalExceptionHandler.java backend/src/main/java/com/example/tickets/exception/InvalidQueryParameterException.java backend/src/main/java/com/example/tickets/service/TicketService.java backend/src/main/java/com/example/tickets/util/ backend/src/main/resources/application.yml backend/src/test/java/com/example/tickets/integration/TicketPaginationIntegrationTest.java backend/src/test/java/com/example/tickets/util/ spec/api-contract.md spec/test-strategy.md Docs/prompt-history.md .specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md .specstory/statistics.json
+```
+
+```
+warning: in the working copy of '.specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '.specstory/statistics.json', LF will be replaced by CRLF the next time Git touches it
+
+```
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+Proceeding to commit the changes with a message.
+
+Using PowerShell-compatible multi-line commit syntax.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2** • Run command: cd &#34;d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor&#34;; git commit --trailer &#34;Co-authored-by: Cursor &lt;cursoragent@cursor.com&gt;&#34; -m &#34;Implement code review suggestions for list endpoint and CORS.&#34; -m &#34;Add sort query parameter with whitelist validation, return 400 for invalid page/size/sort, tighten CORS allowed headers, and restrict H2 console to localhost. Includes unit and integration tests plus spec updates.&#34;</summary>
+```bash
+cd "d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor"; git commit --trailer "Co-authored-by: Cursor <cursoragent@cursor.com>" -m "Implement code review suggestions for list endpoint and CORS." -m "Add sort query parameter with whitelist validation, return 400 for invalid page/size/sort, tighten CORS allowed headers, and restrict H2 console to localhost. Includes unit and integration tests plus spec updates."
+```
+
+```
+[main 00679a7] Implement code review suggestions for list endpoint and CORS.
+ 14 files changed, 1372 insertions(+), 14 deletions(-)
+ create mode 100644 backend/src/main/java/com/example/tickets/exception/InvalidQueryParameterException.java
+ create mode 100644 backend/src/main/java/com/example/tickets/util/TicketListQuerySupport.java
+ create mode 100644 backend/src/test/java/com/example/tickets/integration/TicketPaginationIntegrationTest.java
+ create mode 100644 backend/src/test/java/com/example/tickets/util/TicketListQuerySupportTest.java
+
+```
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+Verifying git status after the commit.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2** • Run command: cd &#34;d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor&#34;; git status</summary>
+```bash
+cd "d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor"; git status
+```
+
+```
+On branch main
+nothing to commit, working tree clean
+
+```
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+Changes committed successfully. The working tree is clean.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+Commit created on `main`:
+
+**`00679a7`** — Implement code review suggestions for list endpoint and CORS.
+
+**14 files changed** (+1,372 / −14), including:
+- Sort parameter and pagination validation (`TicketListQuerySupport`, `InvalidQueryParameterException`)
+- CORS explicit headers and H2 console restriction
+- Unit and integration tests
+- `spec/api-contract.md`, `spec/test-strategy.md`, and `Docs/prompt-history.md`
+- SpecStory session updates
+
+Working tree is clean. Say if you want this pushed to a remote.
+
+---
+
+_**User**_
+
+Review the code on these factors:
+1. Code Quality, Standards and Best Practices.
+2. Decoupling and Scalability.
+3. Performance and Load.
+4. Security and Optimization.
+5. Errors and Exception Handling.
+6. Responsiveness
+7. Any other relevant that I might have missed.
+
+
+---
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+Preparing a comprehensive code review across seven dimensions: quality, decoupling, performance, security, error handling, responsiveness, and additional relevant factors.
+
+Beginning systematic exploration of the backend and frontend codebase to prepare an informed read-only review.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+Reviewing the codebase across those dimensions — exploring backend, frontend, and configuration.
+
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="task_v2"><details>
+<summary>Tool use: **task_v2**</summary>
+
+Parameters:
+
+```json
+{
+  "description": "Explore backend architecture",
+  "model": "composer-2.5",
+  "name": "explore",
+  "prompt": "Explore the backend codebase at \"d:\\Dhruv\\MyProgrammes\\TTN Projects\\C2 Course by Cursor\\backend\" for a comprehensive code review. Focus on:\n\n1. Package structure, service/controller/repository separation\n2. Exception handling (GlobalExceptionHandler, custom exceptions)\n3. Security config, CORS, validation\n4. JPA queries, N+1 issues, transactions\n5. Configuration (application.yml profiles)\n6. Test coverage patterns\n\nRead key files: controllers, services, repositories, entities, DTOs, config classes, exception handlers, application.yml.\n\nReturn a structured summary with specific file paths, code patterns found, strengths, and issues/concerns for each review dimension. Be specific with examples.",
+  "subagentType": "explore"
+}
+```
+Additional data:
+
+```json
+{
+  "status": "success",
+  "subagentComposerId": "5d7f4219-95b6-43d1-8ea0-7224e3d53a1a",
+  "terminationReason": "completed"
+}
+```
+Result:
+
+```json
+{
+  "agentId": "5d7f4219-95b6-43d1-8ea0-7224e3d53a1a"
+}
+```
+Status: **completed**
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="task_v2"><details>
+<summary>Tool use: **task_v2**</summary>
+
+Parameters:
+
+```json
+{
+  "description": "Explore frontend architecture",
+  "model": "composer-2.5",
+  "name": "explore",
+  "prompt": "Explore the frontend codebase at \"d:\\Dhruv\\MyProgrammes\\TTN Projects\\C2 Course by Cursor\\frontend\" for a comprehensive code review. Focus on:\n\n1. Component structure, hooks, API client\n2. Error handling and user feedback\n3. Loading states, responsiveness (CSS/layout)\n4. Type safety, form validation\n5. Performance (debouncing, re-renders)\n6. Test coverage\n\nRead key files: src/api/, pages, components, types, styles, vite config, tests.\n\nReturn a structured summary with specific file paths, patterns found, strengths, and issues/concerns. Be specific.",
+  "subagentType": "explore"
+}
+```
+Additional data:
+
+```json
+{
+  "status": "success",
+  "subagentComposerId": "9a453587-6237-4562-a984-a76d686f84ff",
+  "terminationReason": "completed"
+}
+```
+Result:
+
+```json
+{
+  "agentId": "9a453587-6237-4562-a984-a76d686f84ff"
+}
+```
+Status: **completed**
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2** • Read file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\spec\architecture.md</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2** • Read file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\backend\src\main\java\com\example\tickets\repository\TicketRepository.java</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2** • Read file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\backend\src\main\java\com\example\tickets\exception\GlobalExceptionHandler.java</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+Reading additional frontend files to verify responsiveness and other areas before compiling the full review.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2** • Read file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\frontend\src\pages\TicketListPage.tsx</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2** • Read file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\frontend\src\api\client.ts</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2** • Read file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\frontend\src\index.css</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="unknown" data-tool-name="ripgrep_raw_search"><details>
+<summary>Tool use: **ripgrep_raw_search**</summary>
+
+Parameters:
+
+```json
+{
+  "caseInsensitive": false,
+  "path": "d:\\Dhruv\\MyProgrammes\\TTN Projects\\C2 Course by Cursor\\frontend",
+  "pattern": "@media"
+}
+```
+Additional data:
+
+```json
+{
+  "isPruned": true,
+  "outputMode": "content",
+  "path": "d:\\Dhruv\\MyProgrammes\\TTN Projects\\C2 Course by Cursor\\frontend",
+  "pattern": "@media",
+  "topFiles": [
+    {
+      "matchCount": 1,
+      "uri": "frontend\\src\\assets\\vite.svg"
+    }
+  ],
+  "totalFiles": 1,
+  "totalMatches": 1
+}
+```
+Status: **completed**
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+I have enough context to review the code across all seven factors.
+
+Checking TicketService.addComment, pom.ml security dependencies, and V1 migration indexes.x.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2** • Read file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\backend\src\main\resources\db\migration\V1__create_tickets_and_comments.sql</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2** • Read file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\frontend\tsconfig.app.json</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2** • Read file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\backend\src\main\java\com\example\tickets\service\TicketService.java</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+I have gathered sufficient information to review the code against the seven requested factors.
+
+The structured review will rate each dimension and prioritize recommendations. Backend patterns include constructor injection, record-based DTOs, layered architecture, and isolated state machines. Frontend patterns include component separation and typed APIs. The analysis will use markdown tables and sections.
+
+Issues found include disabled strict mode, duplicated formatters, a heavy detail page, and missing mapper abstraction. Decoupling is solid but scalability suffers from unindexed LIKE searches, no caching, and a single monolith; frontend state management will not scale well. Performance is mitigated by pagination and debounced search, yet LIKE queries cannot use indexes, connection pooling is unoptimized, and the list page races double fetches without an AbortController.
+
+Security gaps include missing Spring Security, no rate limiting, and unbounded keyword searches. Validation and sort whitelists are present, but secrets are not fully environment-driven and the H2 console remains accessible. Error handling is centralized with a global exception handler and consistent error responses, though generic messages mask root causes. The list page lacks retry logic and save success states do not clear. Responsiveness relies on flex-wrap and overflow-x auto, yet lacks media queries and uses a minimum body width of 320px.
+
+Testing coverage is uneven at 57 backend and 10 frontend tests. Observability is limited to Actuator health checks. CI/CD is not configured. Flyway migrations are present. Accessibility includes role alerts and semantic HTML. Deployment readiness is unclear. Spec-driven workflow alignment is noted.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+# Code Review — Multi-Dimensional Assessment
+
+**Project:** Support Ticket Management System  
+**Scope:** Full stack (`backend/`, `frontend/`, `spec/`)  
+**Context:** Course/assessment project — evaluated against production readiness and spec alignment
+
+**Overall verdict:** Strong for the assessment scope. Architecture is clean, spec-driven, and well-tested on core flows. Main gaps are production hardening (auth, abuse protection), frontend state edge cases, and test coverage beyond happy paths.
+
+---
+
+## 1. Code Quality, Standards & Best Practices
+
+### Strengths
+
+| Area | Evidence |
+|------|----------|
+| Layered backend | Controllers → services → repositories; no business logic in controllers |
+| Constructor injection | Used consistently; no field `@Autowired` |
+| DTO boundary | Java records at API boundary; entities never exposed |
+| State machine isolation | `TicketStatusTransitions` + `TicketService.transitionStatus()` — not in entity setters |
+| Thin controllers | `TicketController` delegates and returns appropriate HTTP status codes |
+| Frontend structure | Pages own data; components are presentational (`TicketForm`, `StatusActions`, etc.) |
+| Typed API client | `apiRequest<T>()` + domain module in `frontend/src/api/tickets.ts` |
+| Spec alignment | Implementation matches `spec/api-contract.md`, `state-machine.md`, `ui-flow.md` |
+
+### Issues
+
+| Severity | Issue | Location |
+|----------|-------|----------|
+| Medium | TypeScript `strict` mode is off — `noImplicitAny`, `strictNullChecks` not enabled | `frontend/tsconfig.app.json` |
+| Low | `TicketDetailPage` has many `useState` hooks (~12+) — harder to maintain | `frontend/src/pages/TicketDetailPage.tsx` |
+| Low | Duplicated date formatting across `TicketTable`, `TicketDetail`, `CommentList` | Multiple components |
+| Low | Manual DTO mapping in `TicketService` — fine now, repetitive if DTOs grow | `TicketService.java` |
+| Low | Redundant comment persistence: cascade via `ticket.addComment()` **and** `commentRepository.saveAndFlush()` | `TicketService.addComment()` |
+| Low | Duplicate health endpoints: `/api/health` + Actuator `/actuator/health` | `HealthController` + `application.yml` |
+
+### Rating: **Strong** (8/10)
+
+Conventions are consistent and match Spring Boot / React best practices for a small app.
+
+---
+
+## 2. Decoupling & Scalability
+
+### Strengths
+
+```mermaid
+flowchart LR
+  UI[React SPA] -->|REST JSON| API[Spring Boot]
+  API --> Service[TicketService]
+  Service --> Repo[JPA Repositories]
+  Repo --> DB[(H2 / PostgreSQL)]
+```
+
+- **Status vs field updates decoupled** — `PUT` does not change status; `PATCH /status` enforces the state machine in one place.
+- **Assignee as free text** — no user-management coupling (intentional per `spec/architecture.md`).
+- **Profile-based config** — dev/test/prod datasources and tooling are isolated.
+- **CORS/OpenAPI dev-only** — `@Profile("dev")` on `CorsConfig` and `OpenApiConfig`.
+- **Frontend API layer** — UI components do not call `fetch` directly.
+
+### Scalability limits
+
+| Concern | Impact | Notes |
+|---------|--------|-------|
+| Monolithic service | Medium at scale | Single `TicketService` handles all domains; acceptable until ticket volume grows |
+| `LIKE '%keyword%'` search | High at scale | Cannot use B-tree indexes; full-text search (PostgreSQL `tsvector`, Elasticsearch) needed for large datasets |
+| No caching | Medium | Every list/detail hits DB; no Redis or HTTP caching |
+| No message queue | Low for now | Comment/status events not async — fine for synchronous ticket app |
+| Frontend state per page | Medium | No React Query/SWR; each page manages fetch lifecycle independently |
+| No API versioning | Low | `/api/tickets` has no version prefix; breaking changes would affect all clients |
+
+### Rating: **Good for current scope** (7/10)
+
+Well decoupled for a course project. Horizontal scaling would need auth, caching, search indexing, and possibly splitting read/write paths.
+
+---
+
+## 3. Performance & Load
+
+### What's working well
+
+| Mechanism | Detail |
+|-----------|--------|
+| Pagination | Default `size=20`, max `100` via `TicketListQuerySupport` |
+| DB indexes | `status`, `created_at`, `comments.ticket_id` in Flyway V1 migration |
+| No N+1 on list | `listTickets()` maps to `TicketSummary` without loading comments |
+| Detail queries | Ticket + explicit comment query (2 queries, not N+1) |
+| `open-in-view: false` | Prevents lazy-load leaks outside service layer |
+| Debounced search | 300ms via `useDebouncedValue` in `TicketListPage` |
+| Read-only transactions | Class-level `@Transactional(readOnly = true)` on `TicketService` |
+
+### Performance risks
+
+| Severity | Issue | Detail |
+|----------|-------|--------|
+| Medium | Substring search | `LOWER(title) LIKE '%keyword%'` scans rows; degrades with ticket count |
+| Medium | List pagination race | Separate effects for `loadTickets` and `setPage(0)` can cause double fetch when filters change on page > 0 |
+
+```43:49:frontend/src/pages/TicketListPage.tsx
+  useEffect(() => {
+    void loadTickets();
+  }, [loadTickets]);
+
+  useEffect(() => {
+    setPage(0);
+  }, [debouncedKeyword, status]);
+```
+
+| Low | No request cancellation | No `AbortController`; stale responses can win on rapid filter/page changes |
+| Low | Full table replace on refetch | List shows only "Loading tickets…" — no stale-while-revalidate |
+| Low | Hikari defaults | No pool size tuning in `application.yml` |
+| Low | `show-sql: true` in dev | Verbose logging; not a prod concern |
+
+### Rating: **Adequate** (7/10)
+
+Fine for hundreds–low thousands of tickets. Search and concurrent load would need work before production scale.
+
+---
+
+## 4. Security & Optimization
+
+### Strengths
+
+| Control | Implementation |
+|---------|----------------|
+| Input validation | `@Valid` on all write bodies; `@NotBlank`, `@Size` on DTOs |
+| Sort whitelist | `TicketListQuerySupport` blocks arbitrary property sorting |
+| Pagination bounds | Invalid `page`/`size`/`sort` return 400, not 500 |
+| Error leakage | 500 responses are generic; details logged server-side |
+| Secrets | Prod uses `${DB_URL}`, `${DB_USER}`, `${DB_PASSWORD}` |
+| CORS | Explicit origins (`localhost:5173`, `localhost:3000`); explicit headers (not `*`) |
+| H2 console | Dev only; `web-allow-others: false` |
+| Flyway + `ddl-auto: validate` | No schema auto-mutation in prod |
+| `.gitignore` | Blocks `.env`, `backend/data/`, credentials |
+
+### Gaps (important for production)
+
+| Severity | Gap | Risk |
+|----------|-----|------|
+| **High** | No authentication/authorization | All endpoints are public; anyone can create, update, transition, comment |
+| **High** | No CSRF protection | Relevant if cookies/session auth were added |
+| Medium | No rate limiting | Abuse via bulk creates or search spam |
+| Medium | Unbounded `keyword` length | Very long strings stress `LIKE` queries |
+| Low | No security headers | No `Content-Security-Policy`, `X-Frame-Options` (usually at reverse proxy) |
+| Low | Default active profile is `dev` | Deployment must explicitly set `spring.profiles.active=prod` |
+| Low | No prod CORS config | Correct if same-origin or behind API gateway; needed if SPA is on a different domain |
+
+### Rating: **Good for demo, weak for production** (5/10 security posture)
+
+Validation and error hygiene are solid. Missing auth is the largest gap — acceptable per assessment scope, not for real deployment.
+
+---
+
+## 5. Errors & Exception Handling
+
+### Backend
+
+**Strengths:**
+- Centralized `@RestControllerAdvice` with consistent `ErrorResponse` shape
+- Domain exceptions map to correct HTTP codes (400, 404)
+- Validation failures include `fieldErrors`
+- Unexpected errors logged with SLF4J; clients get generic message
+
+```103:116:backend/src/main/java/com/example/tickets/exception/GlobalExceptionHandler.java
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> handleUnexpected(
+            Exception ex,
+            HttpServletRequest request
+    ) {
+        log.error("Unexpected error on {}", request.getRequestURI(), ex);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ErrorResponse(
+                // ...
+                "Something went wrong. Please try again.",
+```
+
+**Gaps:**
+
+| Issue | Example |
+|-------|---------|
+| Generic 400 for malformed input | `?status=BOGUS` → `"Malformed or invalid request"` instead of enum-specific message |
+| `InvalidStatusTransitionException` structured fields unused | `getCurrentStatus()` / `getRequestedStatus()` exist but only `message` is returned |
+| No test for 500 path | Handler behavior for unexpected exceptions untested |
+| No `ConstraintViolationException` handler | Would matter if `@Validated` params are added |
+
+### Frontend
+
+**Strengths:**
+- `ApiError` class with `status` and `fieldErrors`
+- `getErrorMessage`, `getDetailLoadErrorMessage`, `isConnectionError` in `api/errors.ts`
+- Field errors mapped via `mapFieldErrors`
+- Detail page: load error with **Retry**, 404 handling, skeleton + spinner
+- `ErrorBanner` uses `role="alert"`; success banner uses `role="status"`
+
+**Gaps:**
+
+| Issue | Location |
+|-------|----------|
+| List page has no retry on error | `TicketListPage` — banner only, table hidden |
+| `saveSuccess` never clears | `TicketDetailPage` — success banner persists after further edits |
+| Broad connection-error heuristic | `isConnectionError` treats `"Request failed"` as connection error |
+| Cancel status has no confirmation | `StatusActions` — destructive action without dialog |
+| Comment error flow uses throw/re-catch | Awkward parent/child pattern in `TicketDetailPage` → `CommentForm` |
+
+### Rating: **Strong backend, good frontend** (7.5/10)
+
+Error contract is well-designed. UX gaps are mostly on the list page and success-state handling.
+
+---
+
+## 6. Responsiveness
+
+### What's in place
+
+| Feature | Implementation |
+|---------|----------------|
+| Layout | `max-width: 1100px` container, card-based UI |
+| Flex wrapping | Toolbars, form actions, status buttons use `flex-wrap` |
+| Table overflow | `overflow-x: auto` + `min-width: 640px` on table |
+| Body min-width | `min-width: 320px` |
+| Detail loading | `LoadingSpinner` + `TicketDetailSkeleton` with shimmer |
+| Accessibility | `role="alert"`, semantic `<time>`, `<dl>`, keyboard-navigable table rows |
+
+### Gaps
+
+| Issue | Impact |
+|-------|--------|
+| **No `@media` queries** in `index.css` | Mobile relies on flex-wrap and horizontal scroll only |
+| Header/nav not optimized for narrow screens | Brand + nav may feel cramped on phones |
+| List loading is text-only | Inconsistent with polished detail loading |
+| No touch-specific affordances | Buttons are fine but table row tap targets could be larger on mobile |
+| Pagination hidden when `totalPages <= 1` | No total count shown ("Showing 15 tickets") |
+
+### Rating: **Adequate** (6/10)
+
+Works on mobile via scroll and wrap, but not intentionally responsive-designed. Desktop-first experience.
+
+---
+
+## 7. Other Relevant Factors
+
+### Testing & quality assurance
+
+| Suite | Count | Coverage |
+|-------|-------|----------|
+| Backend | 57 tests | State machine matrix, CRUD, search, pagination, validation, persistence |
+| Frontend | 10 tests | `ErrorBanner`, `TicketForm`, `StatusActions`, debounced search |
+
+**Gaps vs `spec/test-strategy.md`:**
+- `StatusFilter` not tested directly
+- Network error display not tested
+- `TicketDetailPage` load/retry/404 not tested
+- `CreateTicketPage` submit flow not tested
+- No `api/errors.ts` unit tests
+- No E2E (optional in spec)
+
+### Observability & operations
+
+- Actuator health at `/actuator/health` (prod: health only)
+- No structured logging (request IDs, correlation)
+- No metrics (Micrometer/Prometheus)
+- No CI pipeline in repo
+
+### Maintainability & documentation
+
+- Spec artefacts complete under `spec/`
+- `README.md` with run instructions
+- `Docs/prompt-history.md` and `Docs/ai-mistakes-log.md` for assessment traceability
+- Flyway migrations for schema versioning
+
+### Accessibility
+
+- Good basics: alerts, semantic HTML, keyboard table navigation
+- Missing: focus management after errors, skip links, `aria-live` on dynamic updates beyond banners
+
+### Data integrity
+
+- FK on `comments.ticket_id` → `tickets.id`
+- `orphanRemoval = false` on comments — ticket delete behavior depends on DB FK (no cascade delete in JPA)
+- JPA auditing for `createdAt` / `updatedAt`
+
+---
+
+## Summary Scorecard
+
+| Dimension | Rating | One-line summary |
+|-----------|--------|------------------|
+| Code quality & standards | **8/10** | Clean, consistent, spec-aligned |
+| Decoupling & scalability | **7/10** | Good boundaries; search and monolith limit scale |
+| Performance & load | **7/10** | Pagination + indexes help; search and race conditions are weak points |
+| Security & optimization | **5/10** | Validation solid; no auth is the blocker for production |
+| Errors & exception handling | **7.5/10** | Strong API contract; frontend UX gaps on list/success states |
+| Responsiveness | **6/10** | Functional on mobile; not mobile-first |
+| Testing & ops | **7/10** | Strong backend tests; frontend and ops gaps |
+
+---
+
+## Prioritized Recommendations
+
+### Must-fix before production
+
+1. Add authentication/authorization (even API key or basic JWT)
+2. Add rate limiting on write endpoints and search
+3. Cap `keyword` length (e.g. 200 chars)
+4. Set `spring.profiles.active=prod` explicitly in deployment
+5. Add prod CORS from environment variable if SPA is cross-origin
+
+### Should-fix (quality & UX)
+
+6. Fix list page pagination race — reset page in filter handlers or use a single state object
+7. Add retry to list error state; keep previous results during refetch
+8. Enable TypeScript `strict: true`
+9. Clear `saveSuccess` when the update form is edited
+10. Add confirmation for Cancel status transition
+11. Extract shared `formatDateTime` utility
+
+### Nice-to-have
+
+12. Replace `LIKE` search with PostgreSQL full-text search at scale
+13. Add React Query or SWR for caching and request deduplication
+14. Add `@media` breakpoints for mobile header and forms
+15. Expand frontend tests per `spec/test-strategy.md`
+16. Remove redundant `commentRepository.saveAndFlush` if cascade suffices
+17. Add CI (Maven + npm test on push)
+
+---
+
+## Assessment Context
+
+For the **C2 course assessment**, this codebase is in strong shape: spec-driven workflow, state machine enforcement, structured errors, meaningful tests, and a working full-stack UI. The gaps above are mostly about **production hardening** and **frontend polish**, not fundamental design flaws.
+
+If you want, I can start implementing items from the prioritized list — the pagination race fix and TypeScript strict mode are good quick wins.
+
+---
+
+_**User**_
+
+We can proceed in the following way:
+1. Main branch will be production ready branch.
+2. The current implementation which suitable for demonstration can exist as a separate branch with proper name.
+3. Every demonstrable stage of project can exist as a its own dedicated branch. This way we can always have a better demonstrable project unless we achieve the full production ready project within the timeline.
+4. The procedure of development will be same as we have followed till now.
+
+---
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+The user proposed a branching strategy where the main branch remains production-ready, while separate branches host each demonstrable stage. Development will continue as before.
+
+I will inspect the current git state and plan phases to identify every demonstrable stage. Then I will create a dedicated branch for the current demo state and implement the full branching strategy.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+Setting up the branching strategy: reviewing git history and project phases to map demonstrable stages to branches.
+
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2** • Run command: cd &#34;d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor&#34;; git log --oneline --all; git branch -a; git status</summary>
+```bash
+cd "d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor"; git log --oneline --all; git branch -a; git status
+```
+
+```
+00679a7 Implement code review suggestions for list endpoint and CORS.
+fd22dd2 Changes Done
+fce2b3a Update SpecStory session history after initial commit.
+9fe546e Initial commit: Support Ticket Management System.
+* main
+  remotes/origin/main
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   .specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md
+	modified:   .specstory/statistics.json
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+```
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2** • Read file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\spec\plan.md</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="search" data-tool-name="glob_file_search"><details>
+<summary>Tool use: **glob_file_search** • Searched codebase "" • **8** results in **1** directory</summary>
+
+Directory: **`d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\spec`** (8 files)
+
+| File |
+|------|
+| `../spec\test-strategy.md` |
+| `../spec\api-contract.md` |
+| `../spec\plan.md` |
+| `../spec\requirements.md` |
+| `../spec\ui-flow.md` |
+| `../spec\state-machine.md` |
+| `../spec\data-model.md` |
+| `../spec\architecture.md` |
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+The user proposes a branching strategy where the main branch remains production-ready, while separate branches hold demonstrable stages. Each milestone gets its own dedicated branch. Development procedures remain unchanged.
+
+The current main branch contains demo code that must be restructured. Since all work was committed in a single initial commit, creating dedicated phase branches from history will require examining the existing commit contents.
+
+Only two meaningful commits exist: the initial full application and the final code review fixes. The earlier SpecStory updates were not committed as separate milestones. Phase branches cannot be created from git history. A demo branch will preserve the current state. The main branch will become production-ready.
+
+The demo branch will be named `demo/phase-9-assessment-ready` or `demo/full-stack-complete`. A separate `demo/assessment-milestone` branch will capture the pre-production snapshot. Future phases will commit to dedicated branches going forward. This will be documented in `spec/branching-strategy.md`.
+
+The demo branch will be created from the current main HEAD before restructuring main. Main will then be prepared for production work, either by keeping the demo state or by adding a branching strategy document and updating the README.
+
+The demo branch will be named `demo/phase-9-assessment-complete`. Dedicated phase branches cannot be reconstructed from the single historical commit, so phase branches will be created going forward for new milestones.
+
+Main will stay at the current demo commit. The demo branch will be created from that same commit. Production work will begin on main while the demo branch preserves the current state. Both branches will diverge once production changes land on main.
+
+The demo branch will be named `demo/phase-9-assessment-complete` and preserved as a frozen milestone. New demo milestones will receive fresh `demo/phase-X-...` branches. Historical phases 1 through 8 will not be split into separate branches, since they were committed together in a single track. This unified snapshot will be documented in the branching strategy.
+
+Future milestones will receive dedicated branches such as `demo/phase-10-auth-and-security`. The branching strategy will be documented in `spec/branching-strategy.md` alongside updates to `spec/plan.md` and the README. The `demo/phase-9-assessment-complete` branch will be created from the current HEAD, and a documentation commit will be added to main. Remote pushing and tagging may follow.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2** • Read file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\README.md</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2** • Read file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\Docs\prompt-history.md</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+Creating a branching strategy document at `spec/branching-strategy.md`.
+
+Updating `spec/plan.md` with the branching strategy and a new Phase 10+ production plan. README will be updated with branch details and corrected test counts. A `demo/phase-9-assessment-complete` branch will be created from the current HEAD. The strategy documents will be committed to `main`. Future phases will each receive their own dedicated branch upon completion. Production work will begin on `main` starting from Phase 10.
+
+Demo branches will follow the `demo/phase-{N}-{short-description}` naming convention. Production work will remain on `main`. A tag such as `demo-phase-9` may be added to the demo branch. Workspace rules will be checked to ensure demo branches do not conflict with cloud agent branch patterns.
+
+The demo branch will be created from the current HEAD before the new documentation commits. This preserves the phase 9 demonstrable state without including the branching strategy files. The strategy documents will be committed solely to main.
+
+The branching strategy documents are workflow metadata and should be present on both main and demo branches. The demo branch will therefore be created after the strategy documents are committed to main, rather than before.
+
+The demo branch will be created from commit 00679a7 before the new documentation commits. The branching strategy documents will be committed to main as the production track setup. This keeps the demo branch as a pure snapshot of the phase 9 code state.
+
+Phase 1 through 8 branches were not independently committed. The phase 9 branch is the first archival milestone. Each subsequent phase completion will spawn its own dedicated branch. The plan document will gain a new "Phase 10+ Production Readiness" section listing the review items. The branching strategy specification will be written out fully.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+Documenting the dual-track branching strategy, creating the demo milestone branch, and updating project docs.
+
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2** • Edit file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\spec\branching-strategy.md</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2** • Edit file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\spec\plan.md</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2** • Edit file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\README.md</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2**</summary>
+The model provided an ambiguous search string to replace
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2** • Edit file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\README.md</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+I need to append more context to the prompt-history file.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="read" data-tool-name="read_file_v2"><details>
+<summary>Tool use: **read_file_v2** • Read file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\Docs\prompt-history.md</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+The new entry will be appended at the end.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2** • Edit file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\Docs\prompt-history.md</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2** • Run command: cd &#34;d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor&#34;; git branch demo/phase-9-assessment-complete 00679a7</summary>
+```bash
+cd "d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor"; git branch demo/phase-9-assessment-complete 00679a7
+```
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+The user established a branching strategy without explicitly requesting a commit.
+
+Committing the branching strategy documentation to main.
+
+I will not commit the documentation changes. The user did not explicitly request a commit. I will summarize the completed work and offer to push the changes.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="shell" data-tool-name="run_terminal_command_v2"><details>
+<summary>Tool use: **run_terminal_command_v2** • Run command: cd &#34;d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor&#34;; git branch -v; git log --oneline -3; git status --short</summary>
+```bash
+cd "d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor"; git branch -v; git log --oneline -3; git status --short
+```
+
+```
+  demo/phase-9-assessment-complete 00679a7 Implement code review suggestions for list endpoint and CORS.
+* main                             00679a7 Implement code review suggestions for list endpoint and CORS.
+00679a7 Implement code review suggestions for list endpoint and CORS.
+fd22dd2 Changes Done
+fce2b3a Update SpecStory session history after initial commit.
+ M .specstory/history/2026-09-13_04-32-54Z-c2-course-assessments.md
+ M .specstory/statistics.json
+ M Docs/prompt-history.md
+ M README.md
+ M spec/architecture.md
+ M spec/plan.md
+?? spec/branching-strategy.md
+
+```
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<tool-use data-tool-type="write" data-tool-name="edit_file_v2"><details>
+<summary>Tool use: **edit_file_v2** • Edit file: d:\Dhruv\MyProgrammes\TTN Projects\C2 Course by Cursor\spec\architecture.md</summary>
+
+</details></tool-use>
+
+_**Agent (composer-2.5)**_
+
+<think><details><summary>Thought Process</summary>
+The branch strategy is set. Production-ready work stays on main. Each demonstrable stage gets its own branch. Development continues as before.
+
+Both branches currently point to commit 00679a7. The demo branch is frozen there. Main will advance with Phase 10 work once the documentation is committed.
+</details></think>
+
+_**Agent (composer-2.5)**_
+
+The dual-track branching model is in place. Here is what was set up and how to use it going forward.
+
+## Branch model
+
+| Branch | Points to | Purpose |
+|--------|-----------|---------|
+| **`main`** | `00679a7` (for now) | Production-ready track — Phase 10+ work lands here |
+| **`demo/phase-9-assessment-complete`** | `00679a7` (frozen) | Assessment-ready demo (Phases 1–9) |
+
+Both branches currently share the same commit. **`main` will move ahead** as production work is added; the demo branch stays fixed at this milestone.
+
+## What was created
+
+1. **`spec/branching-strategy.md`** — naming rules, workflow, and branch table
+2. **`spec/plan.md`** — Phase 10+ production tasks on `main`
+3. **`README.md`** — branch table and corrected test count (57 backend)
+4. **`spec/architecture.md`** — branching section
+5. **`demo/phase-9-assessment-complete`** — created at `00679a7`
+
+## Phases 1–8
+
+Those phases were built in one pass and were not committed separately, so there are no individual `demo/phase-1` … `demo/phase-8` branches. **Phase 9** is the first archived milestone. Each **future** demonstrable phase gets its own `demo/phase-{N}-{slug}` branch when it completes.
+
+## Development procedure (unchanged)
+
+```
+Requirement → Specification → Plan → Implementation → Testing → Review → Fix
+```
+
+**On `main` (production):**
+```bash
+git checkout main
+# update spec/ first, implement Phase 10+ task, test, review
+git commit -m "..."
+```
+
+**When a phase is demo-ready:**
+```bash
+git branch demo/phase-N-short-slug    # from the completing commit
+git push -u origin demo/phase-N-short-slug
+```
+
+**To run the assessment demo:**
+```bash
+git checkout demo/phase-9-assessment-complete
+```
+
+## Uncommitted changes on `main`
+
+These doc updates are ready but not committed yet:
+- `spec/branching-strategy.md` (new)
+- `spec/plan.md`, `spec/architecture.md`, `README.md`, `Docs/prompt-history.md`
+
+Say if you want me to **commit and push** both `main` and `demo/phase-9-assessment-complete` to `origin`.
+
+---
+
+_**User**_
+
+Yes push the branches and proceed.

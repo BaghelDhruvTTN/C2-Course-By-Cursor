@@ -101,3 +101,8 @@ Controller → Service (throws InvalidTransitionException / NotFoundException)
 - Frontend: static build served by CDN or reverse proxy
 - Database: managed PostgreSQL instance
 - Secrets via environment variables (`DB_URL`, `DB_USER`, `DB_PASSWORD`)
+
+## Branching
+
+- **`main`** — production-ready track (see [`branching-strategy.md`](branching-strategy.md))
+- **`demo/phase-{N}-{slug}`** — frozen demonstrable milestones (e.g. `demo/phase-9-assessment-complete`)

@@ -245,3 +245,15 @@ After each meaningful AI session, append an entry using the template from `.curs
 **Outcome:** Added `TicketListQuerySupport` with pagination/sort validation, `InvalidQueryParameterException` handler, integration and unit tests. Updated `spec/api-contract.md` and `spec/test-strategy.md`. CORS uses explicit allowed headers; H2 console sets `web-allow-others: false`.
 
 **AI mistakes (if any):** _None identified._
+
+---
+
+## 2026-09-19 — Dual-track branching strategy
+
+**Prompt:** Main = production; current demo on separate branch; each demonstrable stage gets its own branch; same dev workflow.
+
+**Context:** Multi-dimensional code review identified production gaps. User wants `main` for production work and `demo/*` branches for preserved milestones.
+
+**Outcome:** Added `spec/branching-strategy.md`, Phase 10+ in `spec/plan.md`, README branch table. Created `demo/phase-9-assessment-complete` at commit `00679a7`.
+
+**AI mistakes (if any):** _None identified._
