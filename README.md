@@ -6,7 +6,8 @@ A full-stack support ticket application built with **Spring Boot 3** and **React
 
 | Branch | Purpose |
 |--------|---------|
-| `main` | Production-ready track (Phase 10+ hardening) |
+| `main` | Production-ready track (latest hardening) |
+| `demo/phase-10-production-baseline` | Production baseline demo (Phase 10 complete) |
 | `demo/phase-9-assessment-complete` | Assessment-ready demo (Phases 1–9 complete) |
 
 See [`spec/branching-strategy.md`](spec/branching-strategy.md) for the full branching model.

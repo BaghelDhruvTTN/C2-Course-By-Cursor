@@ -91,6 +91,8 @@ Use `@SpringBootTest(webEnvironment = RANDOM_PORT)` with `TestRestTemplate` or R
 
 Location: `frontend/src/**/*.test.tsx`
 
+TypeScript `strict: true` is enabled in `frontend/tsconfig.app.json`; `npm run build` must pass before merge.
+
 ### E2E Tests (optional, Playwright or Cypress)
 
 | Flow | Steps |

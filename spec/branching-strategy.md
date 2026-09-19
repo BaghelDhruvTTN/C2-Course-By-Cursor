@@ -84,7 +84,8 @@ cd frontend && npm run dev
 
 | Branch | Commit | Description |
 |--------|--------|-------------|
-| `main` | latest | Production track; receives Phase 10+ work |
+| `main` | latest | Production track; receives Phase 11+ work |
+| `demo/phase-10-production-baseline` | latest at tag time | Phase 10 complete: API key auth, rate limiting, strict TS, CI |
 | `demo/phase-9-assessment-complete` | `00679a7` | Phases 1–9 complete: full-stack app, 57 backend + 10 frontend tests, review fixes |
 
 ### Phases 1–8 (historical note)
@@ -96,7 +97,8 @@ Phases 1–8 were implemented in a single development pass and are not available
 | Phase | Track | Branch when complete |
 |-------|-------|----------------------|
 | 1–9 | Assessment / demo | `demo/phase-9-assessment-complete` |
-| 10+ | Production | `main` (demo branch optional per milestone) |
+| 10 | Production baseline | `demo/phase-10-production-baseline` |
+| 11+ | Production | `main` (demo branch per milestone) |
 
 See [`plan.md`](plan.md) for task details.
 

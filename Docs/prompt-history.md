@@ -269,3 +269,25 @@ After each meaningful AI session, append an entry using the template from `.curs
 **Outcome:** Pushed `main` and `demo/phase-9-assessment-complete` to origin. Phase 10 on `main`: API key auth (prod), rate limiting, keyword length cap, prod CORS from env, frontend list pagination/retry fixes, security tests, GitHub Actions CI.
 
 **AI mistakes (if any):** Used wrong Spring Security import (`authentication.preauth`); fixed with `UsernamePasswordAuthenticationToken`.
+
+---
+
+## 2026-09-19 — Phase 10.5: TypeScript strict mode
+
+**Prompt:** Proceed with 10.5.
+
+**Context:** `frontend/tsconfig.app.json` had strict checks disabled.
+
+**Outcome:** Enabled `"strict": true` in `tsconfig.app.json`. `npm run build` and `npm test` pass with no code changes required.
+
+**AI mistakes (if any):** _None identified._
+
+---
+
+## 2026-09-19 — Phase 10.5 commit and demo branch
+
+**Prompt:** Yes proceed (commit 10.5, create demo/phase-10-production-baseline).
+
+**Outcome:** Committed TypeScript strict mode. Created and pushed `demo/phase-10-production-baseline`. Phase 10 marked complete in `spec/plan.md`.
+
+**AI mistakes (if any):** _None identified._
