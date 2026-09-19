@@ -1,12 +1,9 @@
 package com.example.tickets;
 
+import com.example.tickets.integration.IntegrationTestBase;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 
-@SpringBootTest
-@ActiveProfiles("test")
-class TicketsApplicationTests {
+class TicketsApplicationTests extends IntegrationTestBase {
 
     @Test
     void contextLoads() {

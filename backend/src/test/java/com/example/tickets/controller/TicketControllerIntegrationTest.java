@@ -1,14 +1,10 @@
 package com.example.tickets.controller;
 
-import com.example.tickets.config.JpaAuditingConfig;
+import com.example.tickets.integration.IntegrationTestBase;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
@@ -22,11 +18,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringBootTest
-@AutoConfigureMockMvc
-@Import(JpaAuditingConfig.class)
-@ActiveProfiles("test")
-class TicketControllerIntegrationTest {
+class TicketControllerIntegrationTest extends IntegrationTestBase {
 
     @Autowired
     private MockMvc mockMvc;
@@ -53,7 +45,7 @@ class TicketControllerIntegrationTest {
         long ticketId = objectMapper.readTree(createResult.getResponse().getContentAsString())
                 .get("id").asLong();
 
-        mockMvc.perform(get("/api/tickets"))
+        mockMvc.perform(get("/api/tickets").param("keyword", "Login issue"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.content", hasSize(1)));
 
