@@ -45,9 +45,9 @@ List tickets with optional search and filter.
 |-------|------|----------|-------------|
 | `keyword` | string | No | Case-insensitive search in title and description |
 | `status` | TicketStatus | No | Filter by exact status |
-| `page` | int | No | Page number, default `0` |
-| `size` | int | No | Page size, default `20` |
-| `sort` | string | No | Default `createdAt,desc` |
+| `page` | int | No | Page number, default `0`; must be `>= 0` |
+| `size` | int | No | Page size, default `20`; must be `1`–`100` |
+| `sort` | string | No | Default `createdAt,desc`. Format: `property,direction` where `direction` is `asc` or `desc`. Allowed properties: `createdAt`, `updatedAt`, `title`, `priority`, `status`, `id` |
 
 **Response 200**
 

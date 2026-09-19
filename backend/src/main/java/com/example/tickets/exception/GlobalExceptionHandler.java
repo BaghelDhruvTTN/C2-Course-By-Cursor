@@ -55,6 +55,21 @@ public class GlobalExceptionHandler {
         ));
     }
 
+    @ExceptionHandler(InvalidQueryParameterException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidQueryParameter(
+            InvalidQueryParameterException ex,
+            HttpServletRequest request
+    ) {
+        return ResponseEntity.badRequest().body(new ErrorResponse(
+                Instant.now(),
+                HttpStatus.BAD_REQUEST.value(),
+                "Bad Request",
+                ex.getMessage(),
+                request.getRequestURI(),
+                List.of()
+        ));
+    }
+
     @ExceptionHandler(TicketNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleNotFound(
             TicketNotFoundException ex,

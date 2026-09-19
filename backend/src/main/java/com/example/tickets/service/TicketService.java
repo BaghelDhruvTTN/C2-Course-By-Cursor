@@ -14,10 +14,9 @@ import com.example.tickets.exception.InvalidStatusTransitionException;
 import com.example.tickets.exception.TicketNotFoundException;
 import com.example.tickets.repository.CommentRepository;
 import com.example.tickets.repository.TicketRepository;
+import com.example.tickets.util.TicketListQuerySupport;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,8 +51,14 @@ public class TicketService {
         return toResponse(ticket, loadComments(id));
     }
 
-    public PagedTicketResponse listTickets(String keyword, TicketStatus status, int page, int size) {
-        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
+    public PagedTicketResponse listTickets(
+            String keyword,
+            TicketStatus status,
+            int page,
+            int size,
+            String sort
+    ) {
+        Pageable pageable = TicketListQuerySupport.toPageable(page, size, sort);
         Page<Ticket> results = ticketRepository.searchTickets(keyword, status, pageable);
 
         List<TicketSummary> content = results.getContent().stream()

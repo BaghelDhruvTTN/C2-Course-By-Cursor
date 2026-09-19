@@ -42,6 +42,9 @@ Location: `backend/src/test/java/.../service/`
 | `TicketControllerIntegrationTest` | CRUD lifecycle: create → get → update → comment |
 | `TicketSearchIntegrationTest` | Keyword search matches title and description |
 | `TicketSearchIntegrationTest` | Status filter returns correct subset |
+| `TicketPaginationIntegrationTest` | Invalid `page`/`size`/`sort` return 400 |
+| `TicketPaginationIntegrationTest` | `sort` query param orders results |
+| `TicketListQuerySupportTest` | Pagination and sort parsing validation |
 | `TicketValidationIntegrationTest` | Blank title → 400 with fieldErrors |
 | `TicketPersistenceIntegrationTest` | Data exists after repository flush / context reload |
 

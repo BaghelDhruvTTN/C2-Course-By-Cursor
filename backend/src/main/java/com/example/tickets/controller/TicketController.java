@@ -37,9 +37,10 @@ public class TicketController {
             @RequestParam(required = false) String keyword,
             @RequestParam(required = false) TicketStatus status,
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "20") int size
+            @RequestParam(defaultValue = "20") int size,
+            @RequestParam(required = false) String sort
     ) {
-        return ticketService.listTickets(keyword, status, page, size);
+        return ticketService.listTickets(keyword, status, page, size, sort);
     }
 
     @PostMapping

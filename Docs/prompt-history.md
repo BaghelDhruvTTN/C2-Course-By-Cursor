@@ -233,3 +233,15 @@ After each meaningful AI session, append an entry using the template from `.curs
 **Outcome:** `TicketService.addComment` uses `commentRepository.saveAndFlush`. Test assertion added for `id` and `createdAt` on create response.
 
 **AI mistakes (if any):** _None identified._
+
+---
+
+## 2026-09-19 — Code review suggestions
+
+**Prompt:** Start working on the suggestions.
+
+**Context:** Post-review follow-ups: expose `sort` query param, validate pagination, tighten CORS headers, restrict H2 console.
+
+**Outcome:** Added `TicketListQuerySupport` with pagination/sort validation, `InvalidQueryParameterException` handler, integration and unit tests. Updated `spec/api-contract.md` and `spec/test-strategy.md`. CORS uses explicit allowed headers; H2 console sets `web-allow-others: false`.
+
+**AI mistakes (if any):** _None identified._
