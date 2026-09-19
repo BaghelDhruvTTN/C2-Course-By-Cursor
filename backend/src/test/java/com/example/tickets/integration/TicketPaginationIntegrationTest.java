@@ -53,6 +53,15 @@ class TicketPaginationIntegrationTest {
     }
 
     @Test
+    void excessiveKeyword_returnsBadRequest() throws Exception {
+        String longKeyword = "a".repeat(201);
+        mockMvc.perform(get("/api/tickets").param("keyword", longKeyword))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.status", is(400)))
+                .andExpect(jsonPath("$.message", is("keyword must be <= 200 characters")));
+    }
+
+    @Test
     void sortByTitleAsc_ordersResults() throws Exception {
         TicketApiTestSupport.createTicket(mockMvc, objectMapper, "Zebra issue", "Last alphabetically");
         TicketApiTestSupport.createTicket(mockMvc, objectMapper, "Alpha issue", "First alphabetically");

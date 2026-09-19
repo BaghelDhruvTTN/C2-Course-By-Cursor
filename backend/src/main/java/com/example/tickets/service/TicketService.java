@@ -58,8 +58,9 @@ public class TicketService {
             int size,
             String sort
     ) {
+        String validatedKeyword = TicketListQuerySupport.validateKeyword(keyword);
         Pageable pageable = TicketListQuerySupport.toPageable(page, size, sort);
-        Page<Ticket> results = ticketRepository.searchTickets(keyword, status, pageable);
+        Page<Ticket> results = ticketRepository.searchTickets(validatedKeyword, status, pageable);
 
         List<TicketSummary> content = results.getContent().stream()
                 .map(this::toSummary)

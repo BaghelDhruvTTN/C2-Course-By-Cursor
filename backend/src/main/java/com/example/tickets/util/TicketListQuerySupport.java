@@ -15,8 +15,21 @@ public final class TicketListQuerySupport {
             "createdAt", "updatedAt", "title", "priority", "status", "id"
     );
     private static final int MAX_PAGE_SIZE = 100;
+    public static final int MAX_KEYWORD_LENGTH = 200;
 
     private TicketListQuerySupport() {
+    }
+
+    public static String validateKeyword(String keyword) {
+        if (keyword == null || keyword.isBlank()) {
+            return keyword;
+        }
+        if (keyword.length() > MAX_KEYWORD_LENGTH) {
+            throw new InvalidQueryParameterException(
+                    "keyword must be <= " + MAX_KEYWORD_LENGTH + " characters"
+            );
+        }
+        return keyword;
     }
 
     public static Pageable toPageable(int page, int size, String sort) {

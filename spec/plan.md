@@ -240,13 +240,13 @@ The assessment-ready application (Phases 1–9) is preserved on `demo/phase-9-as
 
 | # | Task | Done |
 |---|------|------|
-| 10.1 | Authentication and authorization | [ ] |
-| 10.2 | Rate limiting and `keyword` length cap | [ ] |
-| 10.3 | Prod CORS from environment variable | [ ] |
-| 10.4 | Frontend: pagination race fix, list error retry | [ ] |
+| 10.1 | Authentication and authorization (API key, prod profile) | [x] |
+| 10.2 | Rate limiting and `keyword` length cap | [x] |
+| 10.3 | Prod CORS from environment variable | [x] |
+| 10.4 | Frontend: pagination race fix, list error retry | [x] |
 | 10.5 | Frontend: TypeScript `strict` mode | [ ] |
-| 10.6 | Expanded test coverage per review | [ ] |
-| 10.7 | CI pipeline (backend + frontend tests) | [ ] |
+| 10.6 | Expanded test coverage per review | [x] |
+| 10.7 | CI pipeline (backend + frontend tests) | [x] |
 | 10.8 | Create `demo/phase-10-production-baseline` when demonstrable | [ ] |
 
 Implement one task or sub-task per session. Update spec before code.
@@ -266,4 +266,4 @@ Implement one task or sub-task per session. Update spec before code.
 | Phase 7 — Frontend pages | **Done** | (included in demo/phase-9) |
 | Phase 8 — Frontend tests | **Done** | (included in demo/phase-9) |
 | Phase 9 — Review & acceptance | **Done** | `demo/phase-9-assessment-complete` |
-| Phase 10+ — Production readiness | **Not started** | `main` |
+| Phase 10+ — Production readiness | **In progress** | `main` |

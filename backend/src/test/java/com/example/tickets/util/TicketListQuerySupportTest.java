@@ -73,4 +73,18 @@ class TicketListQuerySupportTest {
                 .isInstanceOf(InvalidQueryParameterException.class)
                 .hasMessage("sort direction must be 'asc' or 'desc'");
     }
+
+    @Test
+    void validateKeyword_allowsNullAndBlank() {
+        assertThat(TicketListQuerySupport.validateKeyword(null)).isNull();
+        assertThat(TicketListQuerySupport.validateKeyword("  ")).isEqualTo("  ");
+    }
+
+    @Test
+    void validateKeyword_rejectsExcessiveLength() {
+        String longKeyword = "a".repeat(TicketListQuerySupport.MAX_KEYWORD_LENGTH + 1);
+        assertThatThrownBy(() -> TicketListQuerySupport.validateKeyword(longKeyword))
+                .isInstanceOf(InvalidQueryParameterException.class)
+                .hasMessage("keyword must be <= 200 characters");
+    }
 }

@@ -73,7 +73,10 @@ cp frontend/.env.example frontend/.env
 | Variable | Purpose |
 |----------|---------|
 | `DB_URL`, `DB_USER`, `DB_PASSWORD` | PostgreSQL connection (prod profile) |
+| `API_KEY` | API key required for `/api/**` in prod profile |
+| `CORS_ALLOWED_ORIGINS` | Comma-separated frontend origins (prod profile) |
 | `VITE_API_URL` | Frontend API base URL (empty = use Vite proxy) |
+| `VITE_API_KEY` | Optional `X-API-Key` header for secured production API |
 
 ### Profiles
 
@@ -105,7 +108,7 @@ See [`spec/api-contract.md`](spec/api-contract.md) for full details.
 ## Running Tests
 
 ```bash
-# Backend (57 tests)
+# Backend (63 tests)
 cd backend && ./mvnw test
 
 # Frontend (10 tests)

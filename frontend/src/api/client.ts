@@ -1,6 +1,7 @@
 import type { ErrorResponse } from '../types/ticket';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL ?? '';
+const API_KEY = import.meta.env.VITE_API_KEY ?? '';
 
 export class ApiError extends Error {
   readonly status: number;
@@ -57,6 +58,9 @@ export async function apiRequest<T>(
   const headers = new Headers(options.headers);
   if (options.body && !headers.has('Content-Type')) {
     headers.set('Content-Type', 'application/json');
+  }
+  if (API_KEY && !headers.has('X-API-Key')) {
+    headers.set('X-API-Key', API_KEY);
   }
 
   const response = await fetch(`${API_BASE_URL}${path}`, {

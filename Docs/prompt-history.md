@@ -257,3 +257,15 @@ After each meaningful AI session, append an entry using the template from `.curs
 **Outcome:** Added `spec/branching-strategy.md`, Phase 10+ in `spec/plan.md`, README branch table. Created `demo/phase-9-assessment-complete` at commit `00679a7`.
 
 **AI mistakes (if any):** _None identified._
+
+---
+
+## 2026-09-19 — Push branches and Phase 10 production hardening
+
+**Prompt:** Yes push the branches and proceed.
+
+**Context:** Dual-track branching on `main` (production) and `demo/phase-9-assessment-complete`.
+
+**Outcome:** Pushed `main` and `demo/phase-9-assessment-complete` to origin. Phase 10 on `main`: API key auth (prod), rate limiting, keyword length cap, prod CORS from env, frontend list pagination/retry fixes, security tests, GitHub Actions CI.
+
+**AI mistakes (if any):** Used wrong Spring Security import (`authentication.preauth`); fixed with `UsernamePasswordAuthenticationToken`.

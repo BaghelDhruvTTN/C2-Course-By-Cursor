@@ -43,7 +43,7 @@ List tickets with optional search and filter.
 
 | Param | Type | Required | Description |
 |-------|------|----------|-------------|
-| `keyword` | string | No | Case-insensitive search in title and description |
+| `keyword` | string | No | Case-insensitive search in title and description; max 200 characters |
 | `status` | TicketStatus | No | Filter by exact status |
 | `page` | int | No | Page number, default `0`; must be `>= 0` |
 | `size` | int | No | Page size, default `20`; must be `1`–`100` |
@@ -247,12 +247,29 @@ Add a comment to a ticket.
 | 200 | Successful GET, PUT, PATCH |
 | 201 | Successful POST |
 | 400 | Validation error or invalid state transition |
+| 401 | Missing or invalid API key (prod) |
 | 404 | Resource not found |
+| 429 | Rate limit exceeded |
 | 500 | Unexpected server error |
+
+## Authentication (production)
+
+When `tickets.security.enabled=true` (prod profile), all `/api/**` requests require header:
+
+```
+X-API-Key: <API_KEY>
+```
+
+`/actuator/health` remains public. Dev and test profiles disable API key auth.
+
+## Rate limiting
+
+When enabled (default in prod), clients exceeding **120 requests per minute per IP** on `/api/**` receive **429 Too Many Requests**.
 
 ## CORS
 
-`dev` profile allows `http://localhost:5173` and `http://localhost:3000`.
+- `dev` profile: `http://localhost:5173`, `http://localhost:3000`
+- `prod` profile: origins from `CORS_ALLOWED_ORIGINS` (comma-separated)
 
 ## OpenAPI
 
