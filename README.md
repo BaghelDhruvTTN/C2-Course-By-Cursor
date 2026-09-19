@@ -34,7 +34,7 @@ See [`spec/branching-strategy.md`](spec/branching-strategy.md) for the full bran
 ## Prerequisites
 
 - Java 21+
-- Node.js 20+
+- Node.js 22+ (required by Vitest 5 / Vite 8)
 - Maven (or use the included wrapper in `backend/`)
 
 ## Quick Start
