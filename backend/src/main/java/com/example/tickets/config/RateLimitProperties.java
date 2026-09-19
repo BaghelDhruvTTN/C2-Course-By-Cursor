@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "tickets.rate-limit")
 public class RateLimitProperties {
 
-    private boolean enabled = true;
+    private boolean enabled = false;
     private int requestsPerMinute = 120;
 
     public boolean isEnabled() {

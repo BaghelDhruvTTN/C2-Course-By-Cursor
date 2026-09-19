@@ -17,3 +17,9 @@ springdoc:
     enabled: false
   swagger-ui:
     enabled: false
+
+tickets:
+  security:
+    enabled: false
+  rate-limit:
+    enabled: false

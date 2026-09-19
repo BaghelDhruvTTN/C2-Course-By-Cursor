@@ -8,26 +8,27 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class TicketPersistenceIntegrationTest {
 
-    private static final Path PERSISTENCE_DIR = Path.of("target", "persistence-test");
-
     @Test
     void ticketDataSurvivesApplicationRestart() {
-        deletePersistenceFiles();
+        String databaseUrl = "jdbc:h2:file:./target/persistence-test/db-"
+                + UUID.randomUUID().toString().replace("-", "")
+                + "/tickets;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE";
 
         Long ticketId;
         try (var context = new SpringApplicationBuilder(
                 com.example.tickets.TicketsApplication.class)
                 .web(WebApplicationType.NONE)
                 .profiles("persistence-test")
-                .properties("spring.profiles.active=persistence-test")
+                .properties(
+                        "spring.profiles.active=persistence-test",
+                        "spring.datasource.url=" + databaseUrl
+                )
                 .run()) {
             TicketRepository repository = context.getBean(TicketRepository.class);
 
@@ -44,31 +45,16 @@ class TicketPersistenceIntegrationTest {
                 com.example.tickets.TicketsApplication.class)
                 .web(WebApplicationType.NONE)
                 .profiles("persistence-test")
-                .properties("spring.profiles.active=persistence-test")
+                .properties(
+                        "spring.profiles.active=persistence-test",
+                        "spring.datasource.url=" + databaseUrl
+                )
                 .run()) {
             TicketRepository repository = context.getBean(TicketRepository.class);
 
             Ticket loaded = repository.findById(ticketId).orElseThrow();
             assertThat(loaded.getTitle()).isEqualTo("Persistence ticket");
             assertThat(loaded.getStatus()).isEqualTo(TicketStatus.OPEN);
-        }
-    }
-
-    private static void deletePersistenceFiles() {
-        try {
-            if (Files.exists(PERSISTENCE_DIR)) {
-                Files.walk(PERSISTENCE_DIR)
-                        .sorted((a, b) -> b.compareTo(a))
-                        .forEach(path -> {
-                            try {
-                                Files.deleteIfExists(path);
-                            } catch (IOException ignored) {
-                                // Best-effort cleanup before test
-                            }
-                        });
-            }
-        } catch (IOException ignored) {
-            // Best-effort cleanup before test
         }
     }
 }
